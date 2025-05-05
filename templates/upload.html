@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosswalk Detection - Upload Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .upload-form {
+            margin: 0;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        label:hover {
+            background-color: #0056b3;
+        }
+        .btn-upload {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .btn-upload:hover {
+            background-color: #218838;
+        }
+        .instructions {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .note {
+            font-size: 13px;
+            color: #999;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Upload Video for Crosswalk Detection</h1>
+        
+        <form class="upload-form" action="{{ url_for('upload_video') }}" method="POST" enctype="multipart/form-data">
+            <label for="video_file">Choose Video</label>
+            <input type="file" id="video_file" name="video_file" accept="video/*" required>
+
+            <div class="instructions">
+                <p>Instructions:</p>
+                <ul style="text-align:left;">
+                    <li>Click "Choose Video" to upload a video file.</li>
+                    <li>Make sure the video includes a visible crosswalk area.</li>
+                    <li>After uploading, you can draw a rectangle on the crosswalk to detect people.</li>
+                </ul>
+            </div>
+
+            <button type="submit" class="btn-upload">Upload and Process Video</button>
+        </form>
+
+        <p class="note">Supported file formats: MP4, AVI, MOV</p>
+    </div>
+
+</body>
+</html>
